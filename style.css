@@ -122,3 +122,146 @@ footer a {
         font-size: 0.9rem;
     }
 }
+
+
+/* Сетка проектов */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Карточка проекта */
+.project-card {
+    background: white;
+    border-radius: 15px;          /* Скруглённые углы */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;             /* Чтобы углы обрезались */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;           /* Чтобы фото заполняло */
+    display: block;
+}
+
+.project-info {
+    padding: 15px;
+}
+
+.project-info h3 {
+    margin-bottom: 10px;
+    color: #1e2a3a;
+}
+
+.project-info p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #1e2a3a;
+}
+
+/* Подменю категорий */
+.category-menu {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.category-menu a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    background: #e0e0e0;
+    color: #333;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.category-menu a:hover,
+.category-menu a.active {
+    background: #2c3e50;
+    color: white;
+}
+
+/* Секции категорий (по умолчанию скрыты) */
+.project-section {
+    display: none;
+}
+/* При наведении на якорь показываем нужную секцию */
+.project-section:target {
+    display: block;
+}
+/* Скрываем "Все проекты", если выбрана другая категория */
+.project-section:target ~ #all {
+    display: none;
+}
+/* По умолчанию показываем "Все проекты" */
+#all {
+    display: block;
+}
+
+
+/* Стили для страницы контактов */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-link:hover {
+    background: #e0e0e0;
+    transform: translateY(-3px);
+}
+
+.social-link img {
+    width: 24px;
+    height: 24px;
+}
+
+.email-link {
+    font-size: 1.2rem;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
