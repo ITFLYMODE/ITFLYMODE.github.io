@@ -5,41 +5,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Товары - ITFLYMODE</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
 
+    <!-- ============================================================
+         01. ШАПКА САЙТА
+         Логотип + подпись под ним.
+         Дублируется на каждой странице — при правке менять везде.
+         ============================================================ -->
     <header>
         <img src="images/logo.jpg" alt="ITFLYMODE" class="logo">
         <p>ЛИЧНЫЕ ПРОЕКТЫ</p>
     </header>
 
-<nav>
-  
-  <a href="index.html">Проекты</a>
-    <a href="articles.html">Статьи</a>
-    <a href="firmware.html">Прошивки</a>
-    <a href="shop.html">Товары</a>
-    <a href="contacts.html">Контакты</a>
-</nav>
 
+    <!-- ============================================================
+         02. НАВИГАЦИЯ
+         Основное меню сайта. Дублируется на каждой странице.
+         ============================================================ -->
+    <nav>
+        <a href="index.html">Проекты</a>
+        <a href="articles.html">Статьи</a>
+        <a href="firmware.html">Прошивки</a>
+        <a href="shop.html">Товары</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+
+
+    <!-- ============================================================
+         03. ОСНОВНОЙ КОНТЕНТ
+         ============================================================ -->
     <div class="container">
+
+        <!-- ------------------------------------------------------------
+             03.1. Секция «Товары»
+             Содержит фильтр категорий + сетку карточек.
+             ------------------------------------------------------------ -->
         <div class="section">
             <h2>Товары</h2>
-            <p>Витрина готовых устройств. Для заказа свяжитесь со мной.</p>
-            
+            <p>Витрина готовых устройств и услуг. Для заказа свяжитесь со мной.</p>
+
+            <!-- ---- 03.1.1. Кнопки категорий (фильтр) ----
+                 data-category кнопки должен совпадать
+                 с data-category карточек ниже.
+                 Значение "all" показывает всё. -->
+            <div class="shop-categories" id="shopCategories">
+                <button class="active" data-category="all">Все</button>
+                <button data-category="devices">Устройства</button>
+                <button data-category="clothing">Одежда</button>
+                <button data-category="services">Услуги</button>
+            </div>
+
+            <!-- ---- 03.1.2. Сетка карточек товаров ----
+                 Каждая карточка имеет data-category,
+                 по которому её фильтрует JS в конце файла. -->
+            <div class="products-grid" id="productsGrid">
+
+                <!-- ===== КАТЕГОРИЯ: УСТРОЙСТВА (devices) ===== -->
+
+                <div class="product-card" data-category="devices">
+                    <span class="product-badge">В наличии</span>
+                    <img src="images/product1.jpg" alt="Устройство 1">
+                    <div class="product-info">
+                        <h3>Устройство 1</h3>
+                        <p>Короткое описание товара.</p>
+                        <div class="product-price">1 500 ₽</div>
+                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="devices">
+                    <span class="product-badge">В наличии</span>
+                    <img src="images/product2.jpg" alt="Устройство 2">
+                    <div class="product-info">
+                        <h3>Устройство 2</h3>
+                        <p>Короткое описание товара.</p>
+                        <div class="product-price">1 800 ₽</div>
+                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                    </div>
+                </div>
+
+                <!-- ===== КАТЕГОРИЯ: ОДЕЖДА (clothing) ===== -->
+
+                <div class="product-card" data-category="clothing">
+                    <span class="product-badge">В наличии</span>
+                    <img src="images/product3.jpg" alt="Одежда 1">
+                    <div class="product-info">
+                        <h3>Одежда 1</h3>
+                        <p>Короткое описание товара.</p>
+                        <div class="product-price">2 200 ₽</div>
+                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <span class="product-badge">В наличии</span>
+                    <img src="images/product4.jpg" alt="Одежда 2">
+                    <div class="product-info">
+                        <h3>Одежда 2</h3>
+                        <p>Короткое описание товара.</p>
+                        <div class="product-price">2 500 ₽</div>
+                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                    </div>
+                </div>
+
+                <!-- ===== КАТЕГОРИЯ: УСЛУГИ (services) ===== -->
+
+                <div class="product-card" data-category="services">
+                    <span class="product-badge">Услуга</span>
+                    <img src="images/service1.jpg" alt="Разработка платы">
+                    <div class="product-info">
+                        <h3>Разработать плату</h3>
+                        <p>Проектирование печатной платы под вашу задачу: схема, разводка, подготовка файлов для производства.</p>
+                        <div class="product-price">от 3 000 ₽</div>
+                        <a href="https://t.me/your_contact" target="_blank" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="services">
+                    <span class="product-badge">Услуга</span>
+                    <img src="images/service2.jpg" alt="3D печать">
+                    <div class="product-info">
+                        <h3>3D печать</h3>
+                        <p>Печать деталей и корпусов на заказ. Материалы: PLA, PETG, ABS. Расчёт по вашей модели.</p>
+                        <div class="product-price">от 500 ₽</div>
+                        <a href="https://t.me/your_contact" target="_blank" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="services">
+                    <span class="product-badge">Услуга</span>
+                    <img src="images/service3.jpg" alt="Консультация">
+                    <div class="product-info">
+                        <h3>Консультация</h3>
+                        <p>Вопрос по проекту, устройству или другой вопрос.</p>
+                        <div class="product-price">—</div>
+                        <a href="https://t.me/your_contact" target="_blank" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
+        <!-- ------------------------------------------------------------
+             03.2. Секция «О сайте»
+             Стандартный блок, повторяется на всех страницах.
+             ------------------------------------------------------------ -->
         <div class="section">
             <h2>Немного о сайте</h2>
             <p>ITFLYMODE — это мой личный проект, где я буду делиться своими разработками, видео, документацией и готовыми устройствами.</p>
             <p>Следите за обновлениями!</p>
         </div>
+
     </div>
 
+
+    <!-- ============================================================
+         04. ПОДВАЛ
+         ============================================================ -->
     <footer>
-        <p>© 2026 ITFLYMODE | Свяжитесь со мной: <a href="itflymode.contact@gmail.com">itflymode.contact@gmail.com</a></p>
+        <p>© 2026 ITFLYMODE | Свяжитесь со мной: <a href="mailto:itflymode.contact@gmail.com">itflymode.contact@gmail.com</a></p>
     </footer>
+
+
+    <!-- ============================================================
+         05. СКРИПТ: фильтр товаров по категориям
+         ------------------------------------------------------------
+         Логика:
+           - при клике на кнопку категории снимаем active со всех,
+             ставим на нажатую;
+           - каждой карточке: если её data-category совпадает
+             с выбранной (или выбрано "all") — показываем,
+             иначе добавляем класс .hidden (display: none).
+         ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('#shopCategories button');
+            const cards = document.querySelectorAll('#productsGrid .product-card');
+
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const category = btn.dataset.category;
+
+                    // подсветка активной кнопки
+                    buttons.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+
+                    // показ/скрытие карточек
+                    cards.forEach(function (card) {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>

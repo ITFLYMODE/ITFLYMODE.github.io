@@ -3,8 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - ITFLYMODE</title>
+    <title>Статьи - ITFLYMODE</title>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Переопределения для выпадающего меню (чтобы не конфликтовало с style.css) -->
+    <style>
+        /* Контейнер подменю */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Ссылка "Статьи" в основном меню остаётся как есть, но с курсором */
+        .dropdown > a {
+            cursor: pointer;
+        }
+
+        /* Скрытое подменю */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #2c3e50;           /* такой же цвет, как у nav */
+            min-width: 160px;
+            padding: 8px 0;
+            margin: 0;
+            list-style: none;
+            border-radius: 10px;           /* скругление всего блока */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            display: block;
+            margin: 0;                      /* убираем возможные отступы */
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            margin: 0;                     /* отменяем margin из nav a */
+            color: white;
+            text-decoration: none;
+            font-weight: normal;           /* обычный вес шрифта, а не жирный */
+            border-radius: 0;              /* скругление у каждой кнопки не нужно, т.к. весь блок скруглён */
+            transition: background 0.2s;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* На мобильных (когда nav a становится блочным) подменю тоже корректируем */
+        @media (max-width: 600px) {
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: #34495e;
+                border-radius: 0;
+            }
+            .dropdown-menu a {
+                padding-left: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -14,66 +81,29 @@
     </header>
 
     <nav>
-     
-       <a href="index.html">Проекты</a>
-        <a href="articles.html">Статьи</a>
+        <a href="index.html">Проекты</a>
+        <div class="dropdown">
+            <a href="#">Статьи</a>
+            <ul class="dropdown-menu">
+                <li><a href="articles.html">Статьи</a></li>
+                <li><a href="kb/index.html">База знаний</a></li>
+            </ul>
+        </div>
         <a href="firmware.html">Прошивки</a>
         <a href="shop.html">Товары</a>
         <a href="contacts.html">Контакты</a>
     </nav>
 
     <div class="container">
-        <div class="section centered">
-    <h2>О себе</h2>
-    <p>ITFLYMODE — это мой личный проект, где я делюсь своими разработками, видео, документацией и готовыми устройствами.</p>
-    <p>Здесь вы найдёте мои проекты на Arduino, ESP32, STM32 и других платформах, а также статьи, прошивки и товары.</p>
-</div>
-
-
-
-        <div class="section centered">
-            <h2>Мои страницы</h2>
-            <p>Подписывайтесь и следите за новыми проектами:</p>
-            <div class="social-links">
-                <a href="https://hackaday.io/ITFLYMODE" target="_blank" class="social-link">
-                    <img src="https://www.google.com/s2/favicons?domain=hackaday.io&sz=64" alt="Hackaday">
-                    <span>Hackaday</span>
-                </a>
-                <a href="https://github.com/ITFLYMODE" target="_blank" class="social-link">
-                    <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="GitHub">
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.hackster.io/itflymode/" target="_blank" class="social-link">
-                    <img src="https://www.google.com/s2/favicons?domain=hackster.io&sz=64" alt="Hackster">
-                    <span>Hackster</span>
-                </a>
-                <a href="https://habr.com/ru/users/ITFLYMODE/" target="_blank" class="social-link">
-                    <img src="https://www.google.com/s2/favicons?domain=habr.com&sz=64" alt="Habr">
-                    <span>Habr</span>
-                </a>
-                <a href="https://www.youtube.com/@ITFLYMODE" target="_blank" class="social-link">
-                    <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="YouTube">
-                    <span>YouTube</span>
-                </a>
-                <a href="https://t.me/ITFLYMODE" target="_blank" class="social-link">
-    <img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" alt="Telegram">
-    <span>Telegram</span>
-</a>
-            </div>
+        <div class="section">
+            <h2>Статьи</h2>
+            <p>Здесь будут статьи, схемы, гайды</p>
         </div>
 
-   <div class="section donate-section">
-    <h2>Поддержать проект</h2>
-    <p>Если вам нравится то, что я делаю, вы можете поддержать меня. Это поможет создавать новые проекты и делиться ими.</p>
-    <a href="https://www.donationalerts.com/r/ITFLYMODE" target="_blank" class="donate-button">
-        💛 Поддержать
-    </a>
-</div>
-
-        <div class="section centered">
-            <h2>Связь</h2>
-            <p>Для сотрудничества, покупок, предложений и вопросов пишите на почту:</p>
-            <p><a href="mailto:itflymode.contact@gmail.com" class="email-link">itflymode.contact@gmail.com</a></p>
+        <div class="section">
+            <h2>Немного о сайте</h2>
+            <p>ITFLYMODE — это мой личный проект, где я буду делиться своими разработками, видео, документацией и готовыми устройствами.</p>
+            <p>Следите за обновлениями!</p>
         </div>
     </div>
 
@@ -81,5 +111,32 @@
         <p>© 2026 ITFLYMODE | Свяжитесь со мной: <a href="mailto:itflymode.contact@gmail.com">itflymode.contact@gmail.com</a></p>
     </footer>
 
+    <!-- Скрипт для открытия/закрытия подменю -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(function(dropdown) {
+                var link = dropdown.querySelector(':scope > a');
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdowns.forEach(function(d) {
+                        if (d !== dropdown) {
+                            d.classList.remove('active');
+                        }
+                    });
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                dropdowns.forEach(function(dropdown) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
