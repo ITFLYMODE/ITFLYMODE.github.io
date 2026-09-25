@@ -3,24 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проекты - ITFLYMODE</title>
+
+    <!-- === ОСНОВНЫЕ МЕТАТЕГИ === -->
+    <title>ITFLYMODE — личные проекты самодельщика | Arduino, ESP32, STM32</title>
+    <meta name="description" content="ITFLYMODE — личные проекты самодельщика: Arduino, ESP32, STM32, готовые устройства, прошивки и статьи. Схемы, гайды и видео.">
+    <meta name="keywords" content="ITFLYMODE, самодельщик, Arduino, ESP32, STM32, DIY, схемы, прошивки, электроника">
+    <meta name="author" content="ITFLYMODE">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itflymode.github.io/">
+
+    <!-- === FAVICON === -->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+    <link rel="apple-touch-icon" href="images/logo.jpg">
+
+    <!-- === OPEN GRAPH === -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ITFLYMODE — личные проекты самодельщика">
+    <meta property="og:description" content="Arduino, ESP32, STM32, готовые устройства, прошивки, статьи и видео.">
+    <meta property="og:image" content="https://itflymode.github.io/images/logo.jpg">
+    <meta property="og:url" content="https://itflymode.github.io/">
+    <meta property="og:site_name" content="ITFLYMODE">
+    <meta name="twitter:card" content="summary_large_image">
+
+<meta name="yandex-verification" content="e8cc0b5b5f87735c" />
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- === JSON-LD: связка имени ITFLYMODE со всеми соцсетями === -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "ITFLYMODE",
+      "url": "https://itflymode.github.io/",
+      "image": "https://itflymode.github.io/images/logo.jpg",
+      "jobTitle": "Самодельщик, разработчик электроники",
+      "knowsAbout": ["Arduino", "ESP32", "STM32", "DIY", "Электроника"],
+      "sameAs": [
+        "https://t.me/ITFLYMODE",
+        "https://www.youtube.com/@ITFLYMODE",
+        "https://github.com/ITFLYMODE",
+        "https://habr.com/ru/users/ITFLYMODE/",
+        "https://hackaday.io/ITFLYMODE",
+        "https://www.hackster.io/itflymode/",
+        "https://www.printables.com/@ITFLYMODE_5323822",
+        "https://www.reddit.com/user/ITFLYMODE/",
+        "https://www.instagram.com/itflymode/"
+      ]
+    }
+    </script>
+
+    <!-- === YANDEX.METRIKA (раскомментируй после создания счётчика) === -->
+    <!--
+    <script type="text/javascript">
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       ym(XXXXXXXX, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    -->
 </head>
 <body>
 
     <!-- ============================================================
          01. ШАПКА САЙТА
-         Логотип + подпись. Дублируется на каждой странице.
          ============================================================ -->
     <header>
-        <img src="images/logo.jpg" alt="ITFLYMODE" class="logo">
+        <img src="images/logo.jpg" alt="ITFLYMODE — самодельщик, проекты на Arduino, ESP32, STM32" class="logo">
+        <h1>ITFLYMODE</h1>
         <p>ЛИЧНЫЕ ПРОЕКТЫ</p>
     </header>
 
 
     <!-- ============================================================
          02. НАВИГАЦИЯ
-         Основное меню. Дублируется на каждой странице.
          ============================================================ -->
     <nav>
         <a href="index.html">Проекты</a>
@@ -38,15 +97,10 @@
 
         <!-- ------------------------------------------------------------
              03.1. Секция «Проекты»
-             Фильтр категорий + сетка карточек.
              ------------------------------------------------------------ -->
         <div class="section">
             <h2>Проекты</h2>
 
-            <!-- ---- 03.1.1. Подменю категорий (фильтр) ----
-                 data-category ссылки должен совпадать
-                 с data-category карточки ниже.
-                 Значение "all" показывает всё. -->
             <div class="category-menu" id="projectCategories">
                 <a href="#" class="active" data-category="all">Все проекты</a>
                 <a href="#" data-category="arduino">Arduino</a>
@@ -55,14 +109,11 @@
                 <a href="#" data-category="other">Другие проекты</a>
             </div>
 
-            <!-- ---- 03.1.2. Сетка карточек проектов ----
-                 Каждая карточка имеет data-category,
-                 по которому её фильтрует JS в конце файла. -->
             <div class="projects-grid" id="projectsGrid">
 
                 <!-- ===== КАТЕГОРИЯ: ARDUINO ===== -->
                 <div class="project-card" data-category="arduino">
-                    <img src="https://picsum.photos/300/200?random=1" alt="Проект Arduino">
+                    <img src="https://picsum.photos/300/200?random=1" alt="Проект Arduino — кодовый замок ITFLYMODE">
                     <div class="project-info">
                         <h3>Кодовый замок</h3>
                         <p>Описание проекта на Arduino</p>
@@ -72,7 +123,7 @@
 
                 <!-- ===== КАТЕГОРИЯ: ESPY ===== -->
                 <div class="project-card" data-category="espy">
-                    <img src="https://picsum.photos/300/200?random=2" alt="Проект ESPY">
+                    <img src="https://picsum.photos/300/200?random=2" alt="Проект ESPY от ITFLYMODE">
                     <div class="project-info">
                         <h3>Проект</h3>
                         <p>Описание проекта на ESPY</p>
@@ -82,7 +133,7 @@
 
                 <!-- ===== КАТЕГОРИЯ: STM32 ===== -->
                 <div class="project-card" data-category="stm32">
-                    <img src="https://picsum.photos/300/200?random=3" alt="Проект STM32">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Проект STM32 от ITFLYMODE">
                     <div class="project-info">
                         <h3>Проект</h3>
                         <p>Описание проекта на STM32</p>
@@ -92,7 +143,7 @@
 
                 <!-- ===== КАТЕГОРИЯ: ДРУГИЕ ПРОЕКТЫ ===== -->
                 <div class="project-card" data-category="other">
-                    <img src="https://picsum.photos/300/200?random=4" alt="Другие проекты">
+                    <img src="https://picsum.photos/300/200?random=4" alt="Другой проект ITFLYMODE">
                     <div class="project-info">
                         <h3>Проект</h3>
                         <p>Описание другого типа проектов</p>
@@ -105,7 +156,6 @@
 
         <!-- ------------------------------------------------------------
              03.2. Секция «О сайте»
-             Стандартный блок, повторяется на всех страницах.
              ------------------------------------------------------------ -->
         <div class="section">
             <h2>Немного о сайте</h2>
@@ -126,13 +176,6 @@
 
     <!-- ============================================================
          05. СКРИПТ: фильтр проектов по категориям
-         ------------------------------------------------------------
-         Логика:
-           - при клике на ссылку категории снимаем active со всех,
-             ставим на нажатую;
-           - каждой карточке: если её data-category совпадает
-             с выбранной (или выбрано "all") — показываем,
-             иначе добавляем класс .hidden (display: none).
          ============================================================ -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -144,11 +187,9 @@
                     e.preventDefault();
                     const category = btn.dataset.category;
 
-                    // подсветка активной категории
                     buttons.forEach(function (b) { b.classList.remove('active'); });
                     btn.classList.add('active');
 
-                    // показ/скрытие карточек
                     cards.forEach(function (card) {
                         if (category === 'all' || card.dataset.category === category) {
                             card.classList.remove('hidden');

@@ -3,7 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Товары - ITFLYMODE</title>
+
+    <!-- === ОСНОВНЫЕ МЕТАТЕГИ === -->
+    <title>Товары и услуги — ITFLYMODE</title>
+    <meta name="description" content="Товары ITFLYMODE: готовые устройства, разработка печатных плат, 3D-печать на заказ, консультации по электронике.">
+    <meta name="keywords" content="ITFLYMODE, товары, устройства, разработка плат, 3D печать, Arduino, ESP32, STM32">
+    <meta name="author" content="ITFLYMODE">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itflymode.github.io/shop.html">
+
+    <!-- === FAVICON === -->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+    <link rel="apple-touch-icon" href="images/logo.jpg">
+
+    <!-- === OPEN GRAPH === -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Товары и услуги — ITFLYMODE">
+    <meta property="og:description" content="Готовые устройства, разработка плат, 3D-печать, консультации.">
+    <meta property="og:image" content="https://itflymode.github.io/images/logo.jpg">
+    <meta property="og:url" content="https://itflymode.github.io/shop.html">
+    <meta property="og:site_name" content="ITFLYMODE">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +33,8 @@
          01. ШАПКА САЙТА
          ============================================================ -->
     <header>
-        <img src="images/logo.jpg" alt="ITFLYMODE" class="logo">
+        <img src="images/logo.jpg" alt="ITFLYMODE — самодельщик, проекты на Arduino, ESP32, STM32" class="logo">
+        <h1>ITFLYMODE</h1>
         <p>ЛИЧНЫЕ ПРОЕКТЫ</p>
     </header>
 
@@ -41,7 +63,6 @@
             <h2>Товары</h2>
             <p>Витрина готовых устройств и услуг. Для заказа свяжитесь со мной.</p>
 
-            <!-- ---- 03.1.1. Кнопки категорий (фильтр) ---- -->
             <div class="shop-categories" id="shopCategories">
                 <button class="active" data-category="all">Все</button>
                 <button data-category="devices">Устройства</button>
@@ -49,92 +70,85 @@
                 <button data-category="services">Услуги</button>
             </div>
 
-            <!-- ---- 03.1.2. Сетка карточек товаров ----
-                 ВАЖНО: картинки product1.jpg … product4.jpg и
-                 service1.jpg … service3.jpg должны лежать в папке images/.
-                 Пока их нет — будут пустые места. -->
             <div class="products-grid" id="productsGrid">
 
-                <!-- ===== КАТЕГОРИЯ: УСТРОЙСТВА (devices) ===== -->
-
+                <!-- ===== КАТЕГОРИЯ: УСТРОЙСТВА ===== -->
                 <div class="product-card" data-category="devices">
                     <span class="product-badge">В наличии</span>
-                    <img src="images/product1.jpg" alt="Устройство 1">
+                    <img src="images/product1.jpg" alt="Устройство 1 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Устройство 1</h3>
                         <p>Короткое описание товара.</p>
                         <div class="product-price">1 500 ₽</div>
-                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                        <a href="https://t.me/ITFLYMODE" target="_blank" rel="noopener" class="btn">Купить</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="devices">
                     <span class="product-badge">В наличии</span>
-                    <img src="images/product2.jpg" alt="Устройство 2">
+                    <img src="images/product2.jpg" alt="Устройство 2 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Устройство 2</h3>
                         <p>Короткое описание товара.</p>
                         <div class="product-price">1 800 ₽</div>
-                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                        <a href="https://t.me/ITFLYMODE" target="_blank" rel="noopener" class="btn">Купить</a>
                     </div>
                 </div>
 
-                <!-- ===== КАТЕГОРИЯ: ОДЕЖДА (clothing) ===== -->
-
+                <!-- ===== КАТЕГОРИЯ: ОДЕЖДА ===== -->
                 <div class="product-card" data-category="clothing">
                     <span class="product-badge">В наличии</span>
-                    <img src="images/product3.jpg" alt="Одежда 1">
+                    <img src="images/product3.jpg" alt="Одежда 1 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Одежда 1</h3>
                         <p>Короткое описание товара.</p>
                         <div class="product-price">2 200 ₽</div>
-                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                        <a href="https://t.me/ITFLYMODE" target="_blank" rel="noopener" class="btn">Купить</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="clothing">
                     <span class="product-badge">В наличии</span>
-                    <img src="images/product4.jpg" alt="Одежда 2">
+                    <img src="images/product4.jpg" alt="Одежда 2 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Одежда 2</h3>
                         <p>Короткое описание товара.</p>
                         <div class="product-price">2 500 ₽</div>
-                        <a href="https://t.me/your_contact" target="_blank" class="btn">Купить</a>
+                        <a href="https://t.me/ITFLYMODE" target="_blank" rel="noopener" class="btn">Купить</a>
                     </div>
                 </div>
 
-                <!-- ===== КАТЕГОРИЯ: УСЛУГИ (services) ===== -->
-
+                <!-- ===== КАТЕГОРИЯ: УСЛУГИ ===== -->
                 <div class="product-card" data-category="services">
                     <span class="product-badge">Услуга</span>
-                    <img src="images/service1.jpg" alt="Разработка платы">
+                    <img src="images/service1.jpg" alt="Разработка печатной платы — ITFLYMODE">
                     <div class="product-info">
                         <h3>Разработать плату</h3>
                         <p>Проектирование печатной платы под вашу задачу: схема, разводка, подготовка файлов для производства.</p>
                         <div class="product-price">от 3 000 ₽</div>
-                        <a href="https://t.me/your_contact" target="_blank" class="btn">Заказать</a>
+                        <a href="https://t.me/ITFLYMODE" target="_blank" rel="noopener" class="btn">Заказать</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="services">
                     <span class="product-badge">Услуга</span>
-                    <img src="images/service2.jpg" alt="3D печать">
+                    <img src="images/service2.jpg" alt="3D печать на заказ — ITFLYMODE">
                     <div class="product-info">
                         <h3>3D печать</h3>
                         <p>Печать деталей и корпусов на заказ. Материалы: PLA, PETG, ABS. Расчёт по вашей модели.</p>
                         <div class="product-price">от 500 ₽</div>
-                        <a href="https://t.me/your_contact" target="_blank" class="btn">Заказать</a>
+                        <a href="https://t.me/ITFLYMODE" target="_blank" rel="noopener" class="btn">Заказать</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="services">
                     <span class="product-badge">Услуга</span>
-                    <img src="images/service3.jpg" alt="Консультация">
+                    <img src="images/service3.jpg" alt="Консультация по электронике — ITFLYMODE">
                     <div class="product-info">
                         <h3>Консультация</h3>
                         <p>Вопрос по проекту, устройству или другой вопрос.</p>
                         <div class="product-price">—</div>
-                        <a href="https://t.me/your_contact" target="_blank" class="btn">Заказать</a>
+                        <a href="https://t.me/ITFLYMODE" target="_blank" rel="noopener" class="btn">Заказать</a>
                     </div>
                 </div>
 
