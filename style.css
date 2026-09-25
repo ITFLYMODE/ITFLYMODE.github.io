@@ -243,22 +243,9 @@ footer a {
     margin-bottom: 15px;
 }
 
-/* --- Секции категорий: фильтр через :target --- */
-.project-section {
+/* Скрытая карточка проекта (не подходит под выбранную категорию) */
+.project-card.hidden {
     display: none;
-}
-
-.project-section:target {
-    display: block;
-}
-
-/* Скрываем «Все проекты», когда выбран конкретный якорь */
-.project-section:target ~ #all {
-    display: none;
-}
-
-#all {
-    display: block;
 }
 
 
@@ -330,7 +317,7 @@ footer a {
     background: #f0f0f0;
 }
 
-/* Скрытая карточка (не подходит под выбранную категорию) */
+/* Скрытая карточка товара (не подходит под выбранную категорию) */
 .product-card.hidden {
     display: none;
 }
@@ -364,7 +351,7 @@ footer a {
     margin-bottom: 10px;
 }
 
-/* Кнопка на карточке товара — на всю ширину, компактнее общей .btn */
+/* Кнопка на карточке товара — на всю ширину */
 .product-card .btn {
     text-align: center;
     display: block;
@@ -395,7 +382,7 @@ footer a {
    10. СТРАНИЦА «КОНТАКТЫ»
    ============================================================ */
 
-/* --- Контейнер иконок соцсетей --- */
+/* --- Контейнер иконок/кнопок соцсетей --- */
 .social-links {
     display: flex;
     flex-wrap: wrap;
@@ -512,7 +499,7 @@ footer a {
     /* --- Карточки товаров --- */
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;             /* на телефоне тоже одинаково по обеим осям */
+        gap: 16px;
     }
     .product-card img {
         height: 130px;
@@ -532,4 +519,39 @@ footer a {
         padding: 6px 14px;
         font-size: 0.8rem;
     }
+    /* --- Кнопка-ссылка на соцсеть --- */
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s, color 0.3s;
+}
+
+/* Иконка внутри кнопки */
+.social-link i {
+    font-size: 1.1rem;
+}
+
+.social-link:hover {
+    background: #e0e0e0;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* --- Брендовые цвета при наведении --- */
+.social-link.telegram:hover   { background: #229ED9; }
+.social-link.youtube:hover    { background: #FF0000; }
+.social-link.instagram:hover  { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF); }
+.social-link.github:hover     { background: #24292e; }
+.social-link.habr:hover       { background: #629FBC; }
+.social-link.hackaday:hover   { background: #1A1A1A; }
+.social-link.hackster:hover   { background: #1E7DC8; }
+.social-link.printables:hover { background: #FA6831; }
+.social-link.reddit:hover     { background: #FF4500; }
 }
