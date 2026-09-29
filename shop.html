@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- === ОСНОВНЫЕ МЕТАТЕГИ === -->
     <title>Товары и услуги — ITFLYMODE</title>
     <meta name="description" content="Товары ITFLYMODE: готовые устройства, разработка печатных плат, 3D-печать на заказ, консультации по электронике.">
     <meta name="keywords" content="ITFLYMODE, товары, устройства, разработка плат, 3D печать, Arduino, ESP32, STM32">
@@ -12,11 +11,9 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://itflymode.github.io/shop.html">
 
-    <!-- === FAVICON === -->
     <link rel="icon" type="image/jpeg" href="images/logo.jpg">
     <link rel="apple-touch-icon" href="images/logo.jpg">
 
-    <!-- === OPEN GRAPH === -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Товары и услуги — ITFLYMODE">
     <meta property="og:description" content="Готовые устройства, разработка плат, 3D-печать, консультации.">
@@ -26,22 +23,16 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="stylesheet" href="style.css">
+    <script src="pcb.js" defer></script>
 </head>
 <body>
 
-    <!-- ============================================================
-         01. ШАПКА САЙТА
-         ============================================================ -->
     <header>
         <img src="images/logo.jpg" alt="ITFLYMODE — самодельщик, проекты на Arduino, ESP32, STM32" class="logo">
-        <h1>ITFLYMODE</h1>
-        <p>ЛИЧНЫЕ ПРОЕКТЫ</p>
+        <h1><span class="title-part part-it">IT</span><span class="title-part part-fly">FLY</span><span class="title-part part-mode">MODE</span></h1>
+        <p>ПРИЯТНЫХ ПОКУПОК</p>
     </header>
 
-
-    <!-- ============================================================
-         02. НАВИГАЦИЯ
-         ============================================================ -->
     <nav>
         <a href="index.html">Проекты</a>
         <a href="articles.html">Статьи</a>
@@ -50,15 +41,8 @@
         <a href="contacts.html">Контакты</a>
     </nav>
 
-
-    <!-- ============================================================
-         03. ОСНОВНОЙ КОНТЕНТ
-         ============================================================ -->
     <div class="container">
 
-        <!-- ------------------------------------------------------------
-             03.1. Секция «Товары»
-             ------------------------------------------------------------ -->
         <div class="section">
             <h2>Товары</h2>
             <p>Витрина готовых устройств и услуг. Для заказа свяжитесь со мной.</p>
@@ -72,9 +56,8 @@
 
             <div class="products-grid" id="productsGrid">
 
-                <!-- ===== КАТЕГОРИЯ: УСТРОЙСТВА ===== -->
                 <div class="product-card" data-category="devices">
-                    <span class="product-badge">В наличии</span>
+                    <span class="product-badge instock">В наличии</span>
                     <img src="images/product1.jpg" alt="Устройство 1 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Устройство 1</h3>
@@ -85,7 +68,7 @@
                 </div>
 
                 <div class="product-card" data-category="devices">
-                    <span class="product-badge">В наличии</span>
+                    <span class="product-badge out">Нет в наличии</span>
                     <img src="images/product2.jpg" alt="Устройство 2 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Устройство 2</h3>
@@ -95,9 +78,8 @@
                     </div>
                 </div>
 
-                <!-- ===== КАТЕГОРИЯ: ОДЕЖДА ===== -->
                 <div class="product-card" data-category="clothing">
-                    <span class="product-badge">В наличии</span>
+                    <span class="product-badge instock">В наличии</span>
                     <img src="images/product3.jpg" alt="Одежда 1 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Одежда 1</h3>
@@ -108,7 +90,7 @@
                 </div>
 
                 <div class="product-card" data-category="clothing">
-                    <span class="product-badge">В наличии</span>
+                    <span class="product-badge out">Нет в наличии</span>
                     <img src="images/product4.jpg" alt="Одежда 2 от ITFLYMODE">
                     <div class="product-info">
                         <h3>Одежда 2</h3>
@@ -118,9 +100,8 @@
                     </div>
                 </div>
 
-                <!-- ===== КАТЕГОРИЯ: УСЛУГИ ===== -->
                 <div class="product-card" data-category="services">
-                    <span class="product-badge">Услуга</span>
+                    <span class="product-badge service">Услуга</span>
                     <img src="images/service1.jpg" alt="Разработка печатной платы — ITFLYMODE">
                     <div class="product-info">
                         <h3>Разработать плату</h3>
@@ -131,7 +112,7 @@
                 </div>
 
                 <div class="product-card" data-category="services">
-                    <span class="product-badge">Услуга</span>
+                    <span class="product-badge service">Услуга</span>
                     <img src="images/service2.jpg" alt="3D печать на заказ — ITFLYMODE">
                     <div class="product-info">
                         <h3>3D печать</h3>
@@ -142,7 +123,7 @@
                 </div>
 
                 <div class="product-card" data-category="services">
-                    <span class="product-badge">Услуга</span>
+                    <span class="product-badge service">Услуга</span>
                     <img src="images/service3.jpg" alt="Консультация по электронике — ITFLYMODE">
                     <div class="product-info">
                         <h3>Консультация</h3>
@@ -155,9 +136,6 @@
             </div>
         </div>
 
-        <!-- ------------------------------------------------------------
-             03.2. Секция «О сайте»
-             ------------------------------------------------------------ -->
         <div class="section">
             <h2>Немного о сайте</h2>
             <p>ITFLYMODE — это мой личный проект, где я буду делиться своими разработками, видео, документацией и готовыми устройствами.</p>
@@ -166,22 +144,35 @@
 
     </div>
 
-
-    <!-- ============================================================
-         04. ПОДВАЛ
-         ============================================================ -->
     <footer>
         <p>© 2026 ITFLYMODE | Свяжитесь со мной: <a href="mailto:itflymode.contact@gmail.com">itflymode.contact@gmail.com</a></p>
     </footer>
 
-
-    <!-- ============================================================
-         05. СКРИПТ: фильтр товаров по категориям
-         ============================================================ -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const buttons = document.querySelectorAll('#shopCategories button');
             const cards = document.querySelectorAll('#productsGrid .product-card');
+
+            function applyFilter(category) {
+                let visibleIndex = 0;
+
+                cards.forEach(function (card) {
+                    card.classList.remove('appear');
+
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.classList.remove('hidden');
+                        void card.offsetWidth;
+                        card.style.animationDelay = (visibleIndex * 0.15) + 's';
+                        card.classList.add('appear');
+                        visibleIndex++;
+                    } else {
+                        card.classList.add('hidden');
+                        card.style.animationDelay = '';
+                    }
+                });
+            }
+
+            applyFilter('all');
 
             buttons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
@@ -190,13 +181,7 @@
                     buttons.forEach(function (b) { b.classList.remove('active'); });
                     btn.classList.add('active');
 
-                    cards.forEach(function (card) {
-                        if (category === 'all' || card.dataset.category === category) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
+                    applyFilter(category);
                 });
             });
         });

@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- === ОСНОВНЫЕ МЕТАТЕГИ === -->
     <title>Контакты и соцсети — ITFLYMODE</title>
-    <meta name="description" content="Связь с ITFLYMODE: Telegram, YouTube, GitHub, Habr, Hackaday, Printables. Email для сотрудничества и заказов.">
-    <meta name="keywords" content="ITFLYMODE, контакты, Telegram, YouTube, GitHub, Habr, Hackaday, Hackster, Printables">
+    <meta name="description" content="Связь с ITFLYMODE: Telegram, YouTube, RuTube, GitHub, Habr, Hackaday, Hackster, Printables, Reddit, Instagram, Facebook, Boosty. Email для сотрудничества.">
+    <meta name="keywords" content="ITFLYMODE, контакты, Telegram, YouTube, RuTube, GitHub, Habr, Hackaday, Hackster, Printables, Reddit, Facebook, Boosty">
     <meta name="author" content="ITFLYMODE">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://itflymode.github.io/contacts.html">
 
-    <!-- === FAVICON === -->
     <link rel="icon" type="image/jpeg" href="images/logo.jpg">
     <link rel="apple-touch-icon" href="images/logo.jpg">
 
-    <!-- === OPEN GRAPH === -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Контакты и соцсети — ITFLYMODE">
-    <meta property="og:description" content="Telegram, YouTube, GitHub, Habr, Hackaday, Printables. Все мои площадки в одном месте.">
+    <meta property="og:description" content="Все мои площадки в одном месте: Telegram, YouTube, RuTube, GitHub, Habr, Hackaday, Hackster, Printables и другие.">
     <meta property="og:image" content="https://itflymode.github.io/images/logo.jpg">
     <meta property="og:url" content="https://itflymode.github.io/contacts.html">
     <meta property="og:site_name" content="ITFLYMODE">
@@ -27,8 +24,8 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="pcb.js" defer></script>
 
-    <!-- === JSON-LD: связка ITFLYMODE со всеми соцсетями === -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -39,32 +36,28 @@
       "sameAs": [
         "https://t.me/ITFLYMODE",
         "https://www.youtube.com/@ITFLYMODE",
+        "https://rutube.ru/channel/81614248",
         "https://github.com/ITFLYMODE",
         "https://habr.com/ru/users/ITFLYMODE/",
         "https://hackaday.io/ITFLYMODE",
         "https://www.hackster.io/itflymode/",
         "https://www.printables.com/@ITFLYMODE_5323822",
         "https://www.reddit.com/user/ITFLYMODE/",
-        "https://www.instagram.com/itflymode/"
+        "https://www.instagram.com/itflymode/",
+        "https://www.facebook.com/profile.php?id=61594741414231",
+        "https://boosty.to/itflymode"
       ]
     }
     </script>
 </head>
 <body>
 
-    <!-- ============================================================
-         01. ШАПКА САЙТА
-         ============================================================ -->
     <header>
         <img src="images/logo.jpg" alt="ITFLYMODE — самодельщик, проекты на Arduino, ESP32, STM32" class="logo">
-        <h1>ITFLYMODE</h1>
-        <p>ЛИЧНЫЕ ПРОЕКТЫ</p>
+        <h1><span class="title-part part-it">IT</span><span class="title-part part-fly">FLY</span><span class="title-part part-mode">MODE</span></h1>
+        <p>ПРИСОЕДИНЯЙСЯ КО МНЕ</p>
     </header>
 
-
-    <!-- ============================================================
-         02. НАВИГАЦИЯ
-         ============================================================ -->
     <nav>
         <a href="index.html">Проекты</a>
         <a href="articles.html">Статьи</a>
@@ -73,71 +66,83 @@
         <a href="contacts.html">Контакты</a>
     </nav>
 
-
-    <!-- ============================================================
-         03. ОСНОВНОЙ КОНТЕНТ
-         ============================================================ -->
     <div class="container">
 
-        <!-- ------------------------------------------------------------
-             03.1. Секция «О себе»
-             ------------------------------------------------------------ -->
         <div class="section centered">
             <h2>О себе</h2>
             <p>ITFLYMODE — это мой личный проект, где я делюсь своими разработками, видео, документацией и готовыми устройствами.</p>
             <p>Здесь вы найдёте мои проекты на Arduino, ESP32, STM32 и других платформах, а также статьи, прошивки и товары.</p>
         </div>
 
-        <!-- ------------------------------------------------------------
-             03.2. Секция «Мои страницы»
-             ------------------------------------------------------------ -->
         <div class="section centered">
             <h2>Мои страницы</h2>
             <p>Подписывайтесь и следите за новыми проектами:</p>
 
             <div class="social-links">
+
                 <a href="https://t.me/ITFLYMODE" target="_blank" rel="me noopener" class="social-link telegram">
                     <i class="fab fa-telegram"></i>
                     <span>Telegram</span>
                 </a>
+
                 <a href="https://www.youtube.com/@ITFLYMODE" target="_blank" rel="me noopener" class="social-link youtube">
                     <i class="fab fa-youtube"></i>
                     <span>YouTube</span>
                 </a>
+
+                <a href="https://rutube.ru/channel/81614248" target="_blank" rel="me noopener" class="social-link rutube">
+                    <i class="fas fa-circle-play"></i>
+                    <span>RuTube</span>
+                </a>
+
                 <a href="https://github.com/ITFLYMODE" target="_blank" rel="me noopener" class="social-link github">
                     <i class="fab fa-github"></i>
                     <span>GitHub</span>
                 </a>
+
                 <a href="https://habr.com/ru/users/ITFLYMODE/" target="_blank" rel="me noopener" class="social-link habr">
-                    <i class="fab fa-hackerrank"></i>
-                    <span>Habr</span>
+                    <img src="https://cdn.simpleicons.org/habr/333333" alt="Хабр" class="social-icon-img">
+                    <span>Хабр</span>
                 </a>
-                <a href="https://hackaday.io/ITFLYMODE" target="_blank" rel="me noopener" class="social-link hackaday">
+
+                <a href="https://hackaday.io/ITFLYMODE?saved=true" target="_blank" rel="me noopener" class="social-link hackaday">
                     <i class="fas fa-microchip"></i>
                     <span>Hackaday</span>
                 </a>
+
                 <a href="https://www.hackster.io/itflymode/" target="_blank" rel="me noopener" class="social-link hackster">
                     <i class="fas fa-laptop-code"></i>
                     <span>Hackster</span>
                 </a>
+
                 <a href="https://www.printables.com/@ITFLYMODE_5323822" target="_blank" rel="me noopener" class="social-link printables">
                     <i class="fas fa-cube"></i>
                     <span>Printables</span>
                 </a>
+
                 <a href="https://www.reddit.com/user/ITFLYMODE/" target="_blank" rel="me noopener" class="social-link reddit">
                     <i class="fab fa-reddit"></i>
                     <span>Reddit</span>
                 </a>
+
                 <a href="https://www.instagram.com/itflymode/" target="_blank" rel="me noopener" class="social-link instagram">
                     <i class="fab fa-instagram"></i>
                     <span>Instagram</span>
                 </a>
+
+                <a href="https://www.facebook.com/profile.php?id=61594741414231" target="_blank" rel="me noopener" class="social-link facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+
+                <a href="https://boosty.to/itflymode" target="_blank" rel="me noopener" class="social-link boosty">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <span>Boosty</span>
+                </a>
+
             </div>
         </div>
 
-        <!-- ------------------------------------------------------------
-             03.3. Секция «Поддержать проект»
-             ------------------------------------------------------------ -->
         <div class="section donate-section">
             <h2>Поддержать проект</h2>
             <p>Если вам нравится то, что я делаю, вы можете поддержать меня. Это поможет создавать новые проекты и делиться ими.</p>
@@ -146,9 +151,6 @@
             </a>
         </div>
 
-        <!-- ------------------------------------------------------------
-             03.4. Секция «Связь»
-             ------------------------------------------------------------ -->
         <div class="section centered">
             <h2>Связь</h2>
             <p>Для сотрудничества, покупок, предложений и вопросов пишите на почту:</p>
@@ -157,10 +159,6 @@
 
     </div>
 
-
-    <!-- ============================================================
-         04. ПОДВАЛ
-         ============================================================ -->
     <footer>
         <p>© 2026 ITFLYMODE | Свяжитесь со мной: <a href="mailto:itflymode.contact@gmail.com">itflymode.contact@gmail.com</a></p>
     </footer>
