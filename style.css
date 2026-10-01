@@ -14,6 +14,7 @@
 
 html {
     background: #f7f9fb;
+    overflow-x: clip;
 }
 
 body {
@@ -23,6 +24,7 @@ body {
     min-height: 100vh;
     background: transparent;
     position: relative;
+    overflow-x: clip;
 }
 
 
@@ -72,6 +74,7 @@ header h1 {
     letter-spacing: 2px;
     margin-bottom: 5px;
     white-space: nowrap;
+    max-width: 100%;
 }
 
 header h1 .title-part {
@@ -175,6 +178,8 @@ header p {
     display: inline-block;
     min-height: 1.4em;
     color: #cfd8e3;
+    max-width: 100%;
+    word-break: break-word;
 }
 
 body.home header p {
@@ -249,7 +254,7 @@ nav {
     top: 0;
     z-index: 1000;
     background: #2c3e50;
-    padding: 10px 0;
+    padding: 10px 12px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -271,7 +276,7 @@ nav a:hover {
 }
 
 nav.scrolled {
-    padding: 6px 0;
+    padding: 6px 12px;
     background: #26374a;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
@@ -303,7 +308,6 @@ nav.scrolled {
 .section:nth-child(5) { animation-delay: 0.8s; }
 .section:nth-child(6) { animation-delay: 1.0s; }
 
-/* Заголовок секции с акцентной полоской слева */
 .section h2 {
     margin-bottom: 20px;
     padding-left: 16px;
@@ -325,7 +329,6 @@ nav.scrolled {
     box-shadow: 0 0 8px rgba(41, 182, 246, 0.5);
 }
 
-/* Текст секции — в стиле «комментарий в коде» */
 .section > p {
     margin-bottom: 15px;
     margin-left: 16px;
@@ -338,7 +341,9 @@ nav.scrolled {
     border-left: 2px solid #cdd7e0;
     border-radius: 4px;
     letter-spacing: 0.2px;
-    display: inline-block;
+    display: block;
+    max-width: calc(100% - 16px);
+    word-wrap: break-word;
 }
 
 .section > p::before {
@@ -352,7 +357,6 @@ nav.scrolled {
     margin-bottom: 0;
 }
 
-/* В центрированных секциях — сбрасываем декорации */
 .section.centered > p {
     margin-left: 0;
     background: transparent;
@@ -362,6 +366,7 @@ nav.scrolled {
     font-size: 1rem;
     color: #555;
     display: block;
+    max-width: 100%;
 }
 
 .section.centered > p::before {
@@ -388,6 +393,7 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 40px;
+    word-break: break-word;
 }
 
 footer a {
@@ -727,6 +733,7 @@ footer a {
     font-size: 1.2rem;
     color: #3498db;
     text-decoration: none;
+    word-break: break-all;
 }
 
 .email-link:hover {
@@ -773,86 +780,243 @@ footer a {
 
 
 /* ============================================================
-   13. АДАПТИВНОСТЬ (мобильные, до 600px)
+   13. АДАПТИВНОСТЬ — ПЛАНШЕТЫ (до 900px)
    ============================================================ */
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-    }
-    .logo {
-        max-height: 60px;
-    }
-
-    nav a {
-        display: block;
-        margin: 6px 0;
-    }
-
-    nav.scrolled a {
-        display: inline-block;
-        margin: 0 8px;
-        font-size: 0.85rem;
-    }
-
-    .container {
-        padding: 0 10px;
-    }
-    .section {
-        padding: 20px;
-    }
-
-    .section h2 {
-        font-size: 1.25rem;
-    }
-
-    .section > p {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-        margin-left: 10px;
-    }
-
-    footer {
-        font-size: 0.9rem;
-    }
-
+@media (max-width: 900px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-    .product-card img {
-        height: 130px;
-    }
-    .product-info {
-        padding: 8px 10px 12px;
-    }
-    .product-info h3 {
-        font-size: 0.85rem;
-    }
-    .product-info p {
-        font-size: 0.75rem;
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        gap: 24px;
     }
 
-    .product-badge {
-        font-size: 0.6rem;
-        padding: 3px 8px;
-    }
-
-    .shop-categories button {
-        padding: 6px 14px;
-        font-size: 0.8rem;
-    }
-
-    .social-link {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
 }
 
 
 /* ============================================================
-   14. СТРАНИЦА «СТАТЬИ»
+   14. АДАПТИВНОСТЬ — МОБИЛЬНЫЕ (до 600px)
+   ============================================================ */
+
+@media (max-width: 600px) {
+    header {
+        padding: 16px 12px;
+    }
+
+    header h1 {
+        font-size: 1.7rem;
+        letter-spacing: 1px;
+    }
+
+    .logo {
+        max-height: 60px;
+    }
+
+    header p {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+
+    nav {
+        padding: 8px 8px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 4px 6px;
+        font-size: 0.85rem;
+    }
+
+    nav.scrolled {
+        padding: 5px 8px;
+    }
+
+    nav.scrolled a {
+        margin: 3px 6px;
+        font-size: 0.8rem;
+    }
+
+    .container {
+        padding: 0 10px;
+        margin: 12px auto;
+    }
+
+    .section {
+        padding: 20px 16px;
+        margin-bottom: 18px;
+    }
+
+    .section h2 {
+        font-size: 1.25rem;
+        padding-left: 14px;
+    }
+
+    .section > p {
+        font-size: 0.82rem;
+        padding: 8px 12px;
+        margin-left: 14px;
+        max-width: calc(100% - 14px);
+    }
+
+    .section.centered > p {
+        font-size: 0.95rem;
+    }
+
+    footer {
+        font-size: 0.85rem;
+        padding: 16px 12px;
+    }
+
+    .shop-categories {
+        gap: 6px;
+        margin: 14px 0 18px;
+    }
+
+    .shop-categories button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+    }
+
+    .product-card img {
+        height: 120px;
+    }
+
+    .product-info {
+        padding: 8px 10px 12px;
+    }
+
+    .product-info h3 {
+        font-size: 0.85rem;
+    }
+
+    .product-info p {
+        font-size: 0.72rem;
+    }
+
+    .product-price {
+        font-size: 0.9rem;
+    }
+
+    .product-badge {
+        font-size: 0.58rem;
+        padding: 3px 7px;
+    }
+
+    .category-menu a {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        margin: 4px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .project-card img {
+        height: 170px;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-link {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+
+    .social-link i,
+    .social-link .social-icon-img {
+        width: 18px;
+        height: 18px;
+        font-size: 0.95rem;
+    }
+
+    .email-link {
+        font-size: 1rem;
+    }
+
+    .donate-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+}
+
+
+/* ============================================================
+   15. АДАПТИВНОСТЬ — УЗКИЕ ЭКРАНЫ (до 400px)
+   ============================================================ */
+
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+    }
+
+    header p {
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+    }
+
+    .logo {
+        max-height: 50px;
+    }
+
+    nav a {
+        margin: 3px 5px;
+        font-size: 0.78rem;
+    }
+
+    nav.scrolled a {
+        font-size: 0.75rem;
+        margin: 3px 5px;
+    }
+
+    .section {
+        padding: 16px 12px;
+    }
+
+    .section h2 {
+        font-size: 1.1rem;
+    }
+
+    .section > p {
+        font-size: 0.78rem;
+        margin-left: 12px;
+        max-width: calc(100% - 12px);
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .social-link {
+        padding: 7px 12px;
+        font-size: 0.8rem;
+    }
+
+    .shop-categories button {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+}
+
+
+/* ============================================================
+   16. СТРАНИЦА «СТАТЬИ»
    ============================================================ */
 
 .news-list {
@@ -1036,7 +1200,7 @@ footer a {
 
 
 /* ============================================================
-   15. ФОН С ДОРОЖКАМИ PCB + АНИМИРОВАННЫЕ ТОЧКИ
+   17. ФОН С ДОРОЖКАМИ PCB + АНИМИРОВАННЫЕ ТОЧКИ
    ============================================================ */
 
 .pcb-bg {
