@@ -146,11 +146,11 @@
             const cards = document.querySelectorAll('#projectsGrid .project-card');
 
             const isMobile = window.innerWidth <= 900;
+            const baseQueueDelay = isMobile ? 500 : 200;
 
-            /* === Очередь появления карточек (только для мобильных) === */
+            /* === Очередь появления карточек — общая для ПК и мобильных === */
             const queue = [];
             let processing = false;
-            const queueDelay = 500;
 
             function processQueue() {
                 if (queue.length === 0) {
@@ -158,12 +158,20 @@
                     return;
                 }
                 processing = true;
+
                 const card = queue.shift();
                 card.classList.remove('queued');
                 card.style.transform = '';
                 void card.offsetWidth;
                 card.classList.add('appear');
-                setTimeout(processQueue, queueDelay);
+
+                // Динамическая задержка: чем больше очередь, тем быстрее
+                let delay = baseQueueDelay;
+                if (queue.length > 6) delay = 80;
+                else if (queue.length > 3) delay = isMobile ? 150 : 100;
+                else if (queue.length > 1) delay = isMobile ? 300 : 150;
+
+                setTimeout(processQueue, delay);
             }
 
             function enqueueCard(card) {
@@ -173,27 +181,67 @@
                 if (!processing) processQueue();
             }
 
-            /* === IntersectionObserver (только мобильные) === */
-            let cardObserver = null;
-            if (isMobile) {
-                cardObserver = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            enqueueCard(entry.target);
-                            cardObserver.unobserve(entry.target);
+            // Мгновенно показать все карточки в текущем viewport
+            function showVisibleCardsImmediately() {
+                let anyShown = false;
+                cards.forEach(function (card) {
+                    const rect = card.getBoundingClientRect();
+                    const vh = window.innerHeight;
+
+                    if (rect.top < vh && rect.bottom > -100) {
+                        if (card.classList.contains('queued')) {
+                            card.classList.remove('queued');
+                            const idx = queue.indexOf(card);
+                            if (idx > -1) queue.splice(idx, 1);
+                            card.style.transform = '';
+                            void card.offsetWidth;
+                            card.classList.add('appear');
+                            anyShown = true;
                         }
-                    });
-                }, {
-                    threshold: 0.15,
-                    rootMargin: '0px 0px -80px 0px'
+                    }
                 });
+                return anyShown;
             }
+
+            /* === IntersectionObserver — общий === */
+            const cardObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        card.classList.remove('queued');
+                        enqueueCard(card);
+                        cardObserver.unobserve(card);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -80px 0px'
+            });
+
+            /* === Детектор быстрого скролла — общий === */
+            let lastScrollY = window.scrollY;
+            let scrollCheckTimer = null;
+
+            window.addEventListener('scroll', function () {
+                const currentY = window.scrollY;
+                const delta = Math.abs(currentY - lastScrollY);
+                lastScrollY = currentY;
+
+                if (delta > 200) {
+                    showVisibleCardsImmediately();
+                }
+
+                clearTimeout(scrollCheckTimer);
+                scrollCheckTimer = setTimeout(function () {
+                    if (queue.length > 0) {
+                        showVisibleCardsImmediately();
+                    }
+                }, 250);
+            }, { passive: true });
 
             function applyFilter(category) {
                 queue.length = 0;
                 processing = false;
-
-                let visibleIndex = 0;
 
                 cards.forEach(function (card) {
                     card.classList.remove('appear');
@@ -201,27 +249,20 @@
                     card.style.animationDelay = '';
                     card.style.transform = '';
 
-                    if (isMobile && cardObserver) {
-                        cardObserver.unobserve(card);
-                    }
+                    cardObserver.unobserve(card);
 
                     if (category === 'all' || card.dataset.category === category) {
                         card.classList.remove('hidden');
 
-                        if (isMobile) {
-                            const rect = card.getBoundingClientRect();
-                            const vh = window.innerHeight;
+                        const rect = card.getBoundingClientRect();
+                        const vh = window.innerHeight;
+                        const inViewport = rect.top < vh - 80 && rect.bottom > 0;
 
-                            if (rect.top < vh - 80 && rect.bottom > 0) {
-                                enqueueCard(card);
-                            } else {
-                                cardObserver.observe(card);
-                            }
+                        if (inViewport) {
+                            enqueueCard(card);
                         } else {
-                            void card.offsetWidth;
-                            card.style.animationDelay = (visibleIndex * 0.15) + 's';
-                            card.classList.add('appear');
-                            visibleIndex++;
+                            card.classList.add('queued');
+                            cardObserver.observe(card);
                         }
                     } else {
                         card.classList.add('hidden');

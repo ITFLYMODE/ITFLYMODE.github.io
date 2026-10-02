@@ -159,6 +159,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+    /* ===== 2.5. КОММЕНТАРИИ-ПАРАГРАФЫ: появление при скролле ===== */
+    const comments = document.querySelectorAll('.section:not(.centered) > p');
+
+    const vh = window.innerHeight;
+    let commentIndex = 0;
+    comments.forEach(function (comment) {
+        const rect = comment.getBoundingClientRect();
+        if (rect.top < vh && rect.bottom > 0) {
+            comment.style.transitionDelay = (commentIndex * 0.12) + 's';
+            commentIndex++;
+            requestAnimationFrame(function () {
+                comment.classList.add('comment-visible');
+            });
+        }
+    });
+
+    const commentObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.transitionDelay = '0s';
+                entry.target.classList.add('comment-visible');
+                commentObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    comments.forEach(function (comment) {
+        if (!comment.classList.contains('comment-visible')) {
+            commentObserver.observe(comment);
+        }
+    });
+
+
     /* ===== 3. НАВИГАЦИЯ: компактность при скролле ===== */
     const nav = document.querySelector('nav');
     if (nav) {

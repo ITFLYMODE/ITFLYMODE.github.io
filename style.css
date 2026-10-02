@@ -322,6 +322,7 @@ nav.scrolled {
     }
 }
 
+/* === Заголовок секции: плавное появление слева === */
 .section h2 {
     margin-bottom: 20px;
     padding-left: 16px;
@@ -329,8 +330,35 @@ nav.scrolled {
     font-size: 1.5rem;
     line-height: 1.2;
     position: relative;
+    opacity: 0;
+    transform: translateX(-25px);
+    will-change: opacity, transform;
 }
 
+.section.visible h2 {
+    animation: headingAppear 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+@keyframes headingAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section h2 {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
+
+/* === Полоска: растёт снизу вверх → исчезает → появляется сразу целиком === */
 .section h2::before {
     content: '';
     position: absolute;
@@ -341,6 +369,49 @@ nav.scrolled {
     background: linear-gradient(180deg, #0288D1, #29B6F6);
     border-radius: 4px;
     box-shadow: 0 0 8px rgba(41, 182, 246, 0.5);
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    will-change: opacity, transform;
+}
+
+.section.visible h2::before {
+    animation: barGrowThenFlash 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes barGrowThenFlash {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    /* Растёт снизу вверх — медленнее */
+    55% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    /* Пауза — полоска целиком стоит */
+    68% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    /* Исчезает */
+    76% {
+        opacity: 0;
+        transform: scaleY(1);
+    }
+    /* Появляется сразу в полном размере */
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section h2::before {
+        opacity: 1;
+        transform: scaleY(1);
+        animation: none;
+    }
 }
 
 .section > p {
@@ -371,6 +442,54 @@ nav.scrolled {
     margin-bottom: 0;
 }
 
+/* ============================================================
+   Комментарии: полоска вырастает слева → текст раскрывается
+   ============================================================ */
+.section:not(.centered) > p {
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(#f4f7fa, #f4f7fa);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 0% 100%;
+    border-left-color: transparent;
+    transition:
+        background-size 1s cubic-bezier(0.65, 0, 0.35, 1),
+        border-left-color 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.section:not(.centered) > p.comment-visible {
+    background-size: 100% 100%;
+    border-left-color: #cdd7e0;
+}
+
+.section:not(.centered) > p::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #ffffff;
+    border-radius: inherit;
+    transform: translateX(0);
+    transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.55s;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.section:not(.centered) > p.comment-visible::after {
+    transform: translateX(101%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section:not(.centered) > p {
+        background-size: 100% 100%;
+        border-left-color: #cdd7e0;
+        transition: none;
+    }
+    .section:not(.centered) > p::after {
+        display: none;
+    }
+}
+
 .section.centered > p {
     margin-left: 0;
     background: transparent;
@@ -385,6 +504,10 @@ nav.scrolled {
 
 .section.centered > p::before {
     content: none;
+}
+
+.section.centered > p::after {
+    display: none;
 }
 
 .section.centered h2 {
@@ -416,7 +539,7 @@ footer a {
 
 
 /* ============================================================
-   06. АНИМАЦИИ — БАЗОВЫЕ (для ПК)
+   06. АНИМАЦИИ — БАЗОВЫЕ
    ============================================================ */
 
 @keyframes cardAppear {
@@ -430,7 +553,6 @@ footer a {
     }
 }
 
-/* Мобильная версия — с blur (используется только внутри @media 600px) */
 @keyframes cardAppearMobile {
     0% {
         opacity: 0;
@@ -445,6 +567,17 @@ footer a {
         opacity: 1;
         transform: translateY(0) scale(1);
         filter: blur(0);
+    }
+}
+
+@keyframes btnSlideOut {
+    0% {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
@@ -470,7 +603,7 @@ footer a {
 
 
 /* ============================================================
-   08. СТРАНИЦА «ПРОЕКТЫ» — как товары
+   08. СТРАНИЦА «ПРОЕКТЫ»
    ============================================================ */
 
 .category-menu {
@@ -487,12 +620,30 @@ footer a {
     border-radius: 20px;
     text-decoration: none;
     transition: background 0.3s;
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: btnSlideOut 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+.category-menu a:nth-child(1) { animation-delay: 0.05s; }
+.category-menu a:nth-child(2) { animation-delay: 0.15s; }
+.category-menu a:nth-child(3) { animation-delay: 0.25s; }
+.category-menu a:nth-child(4) { animation-delay: 0.35s; }
+.category-menu a:nth-child(5) { animation-delay: 0.45s; }
+.category-menu a:nth-child(6) { animation-delay: 0.55s; }
 
 .category-menu a:hover,
 .category-menu a.active {
     background: #2c3e50;
     color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .category-menu a {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
 }
 
 .projects-grid {
@@ -591,7 +742,17 @@ footer a {
     font-family: inherit;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: btnSlideOut 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+.shop-categories button:nth-child(1) { animation-delay: 0.05s; }
+.shop-categories button:nth-child(2) { animation-delay: 0.15s; }
+.shop-categories button:nth-child(3) { animation-delay: 0.25s; }
+.shop-categories button:nth-child(4) { animation-delay: 0.35s; }
+.shop-categories button:nth-child(5) { animation-delay: 0.45s; }
+.shop-categories button:nth-child(6) { animation-delay: 0.55s; }
 
 .shop-categories button:hover {
     background: #d0d0d0;
@@ -600,6 +761,14 @@ footer a {
 .shop-categories button.active {
     background: #2c3e50;
     color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shop-categories button {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
 }
 
 .products-grid {
@@ -919,7 +1088,6 @@ footer a {
         padding: 16px 12px;
     }
 
-    /* ТОВАРЫ */
     .shop-categories {
         gap: 6px;
         margin: 14px 0 18px;
@@ -968,7 +1136,6 @@ footer a {
         right: 6px;
     }
 
-    /* ПРОЕКТЫ */
     .category-menu a {
         padding: 6px 12px;
         font-size: 0.85rem;
@@ -1002,7 +1169,6 @@ footer a {
         font-size: 0.75rem;
     }
 
-    /* КОНТАКТЫ */
     .social-links {
         gap: 8px;
     }
@@ -1028,7 +1194,6 @@ footer a {
         font-size: 1rem;
     }
 
-    /* ДЕКОР */
     .header-fx {
         display: none;
     }
@@ -1395,11 +1560,9 @@ header p {
 
 /* ============================================================
    19. МОБИЛЬНЫЕ: карточки скрыты до появления (фикс мигания)
-        + плавная анимация с blur. На ПК НЕ влияет.
    ============================================================ */
 
 @media (max-width: 600px) {
-    /* Скрываем карточки по умолчанию — JS покажет через .appear */
     .project-card,
     .product-card {
         opacity: 0;
@@ -1407,7 +1570,6 @@ header p {
         will-change: opacity, transform;
     }
 
-    /* Плавная анимация с blur — только на мобильном */
     .project-card.appear,
     .product-card.appear {
         animation: cardAppearMobile 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;

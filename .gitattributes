@@ -1,0 +1,18 @@
+# Принудительно считать все файлы кода
+* linguist-vendored=false
+
+# Указываем язык для CSS и JS
+*.css linguist-language=CSS
+*.js  linguist-language=JavaScript
+
+# Считаем эти файлы кодом, а не «документацией»
+*.css linguist-detectable=true
+*.js  linguist-detectable=true
+*.html linguist-detectable=true
+
+# Служебные файлы не считаем
+*.md     linguist-detectable=false
+*.txt    linguist-detectable=false
+*.xml    linguist-detectable=false
+*.json   linguist-detectable=false
+*.gitattributes linguist-detectable=false
