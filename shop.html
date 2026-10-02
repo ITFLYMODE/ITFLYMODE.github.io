@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1e2a3a">
 
     <title>Товары и услуги — ITFLYMODE</title>
     <meta name="description" content="Товары ITFLYMODE: готовые устройства, разработка печатных плат, 3D-печать на заказ, консультации по электронике, книги.">
@@ -101,7 +102,6 @@
                     </div>
                 </div>
 
-                <!-- ===== УСЛУГИ ===== -->
                 <div class="product-card" data-category="services">
                     <span class="product-badge service">Услуга</span>
                     <img src="images/service1.jpg" alt="Разработка печатной платы — ITFLYMODE">
@@ -135,7 +135,6 @@
                     </div>
                 </div>
 
-                <!-- ===== ЛИТЕРАТУРА ===== -->
                 <div class="product-card" data-category="books">
                     <span class="product-badge instock">В наличии</span>
                     <img src="images/book1.jpg" alt="Книга 1 — ITFLYMODE">
@@ -189,21 +188,86 @@
             const buttons = document.querySelectorAll('#shopCategories button');
             const cards = document.querySelectorAll('#productsGrid .product-card');
 
+            const isMobile = window.innerWidth <= 900;
+
+            /* === Очередь появления карточек (только для мобильных) === */
+            const queue = [];
+            let processing = false;
+            const queueDelay = 500;
+
+            function processQueue() {
+                if (queue.length === 0) {
+                    processing = false;
+                    return;
+                }
+                processing = true;
+                const card = queue.shift();
+                card.classList.remove('queued');
+                card.style.transform = '';
+                void card.offsetWidth;
+                card.classList.add('appear');
+                setTimeout(processQueue, queueDelay);
+            }
+
+            function enqueueCard(card) {
+                if (card.classList.contains('appear') || card.classList.contains('queued')) return;
+                card.classList.add('queued');
+                queue.push(card);
+                if (!processing) processQueue();
+            }
+
+            /* === IntersectionObserver (только мобильные) === */
+            let cardObserver = null;
+            if (isMobile) {
+                cardObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            enqueueCard(entry.target);
+                            cardObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -80px 0px'
+                });
+            }
+
             function applyFilter(category) {
+                queue.length = 0;
+                processing = false;
+
                 let visibleIndex = 0;
 
                 cards.forEach(function (card) {
                     card.classList.remove('appear');
+                    card.classList.remove('queued');
+                    card.style.animationDelay = '';
+                    card.style.transform = '';
+
+                    if (isMobile && cardObserver) {
+                        cardObserver.unobserve(card);
+                    }
 
                     if (category === 'all' || card.dataset.category === category) {
                         card.classList.remove('hidden');
-                        void card.offsetWidth;
-                        card.style.animationDelay = (visibleIndex * 0.15) + 's';
-                        card.classList.add('appear');
-                        visibleIndex++;
+
+                        if (isMobile) {
+                            const rect = card.getBoundingClientRect();
+                            const vh = window.innerHeight;
+
+                            if (rect.top < vh - 80 && rect.bottom > 0) {
+                                enqueueCard(card);
+                            } else {
+                                cardObserver.observe(card);
+                            }
+                        } else {
+                            void card.offsetWidth;
+                            card.style.animationDelay = (visibleIndex * 0.15) + 's';
+                            card.classList.add('appear');
+                            visibleIndex++;
+                        }
                     } else {
                         card.classList.add('hidden');
-                        card.style.animationDelay = '';
                     }
                 });
             }

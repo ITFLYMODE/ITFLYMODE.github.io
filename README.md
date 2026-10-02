@@ -22,18 +22,21 @@ ITFLYMODE — открытая инженерная площадка, где я 
 
 ## 🔗 Официальные площадки
 
-| Платформа     | Ссылка                                                                     |
-| ------------- | -------------------------------------------------------------------------- |
-| 🌐 Сайт       | [itflymode.github.io](https://itflymode.github.io/)                        |
-| 📢 Telegram   | [t.me/ITFLYMODE](https://t.me/ITFLYMODE)                                   |
-| 🎬 YouTube    | [@ITFLYMODE](https://www.youtube.com/@ITFLYMODE)                           |
-| 💻 GitHub     | [github.com/ITFLYMODE](https://github.com/ITFLYMODE)                       |
-| ✍️ Habr       | [habr.com/ru/users/ITFLYMODE](https://habr.com/ru/users/ITFLYMODE/)        |
-| 🔧 Hackaday   | [hackaday.io/ITFLYMODE](https://hackaday.io/ITFLYMODE)                     |
-| 🛠 Hackster   | [hackster.io/itflymode](https://www.hackster.io/itflymode/)                |
-| 🖨 Printables | [printables.com/@ITFLYMODE](https://www.printables.com/@ITFLYMODE_5323822) |
-| 👽 Reddit     | [reddit.com/user/ITFLYMODE](https://www.reddit.com/user/ITFLYMODE/)        |
-| 📷 Instagram  | [instagram.com/itflymode](https://www.instagram.com/itflymode/)            |
+| Платформа     | Ссылка                                                                                               |
+| ------------- | ---------------------------------------------------------------------------------------------------- |
+| 🌐 Сайт       | [itflymode.github.io](https://itflymode.github.io/)                                                  |
+| 📢 Telegram   | [t.me/ITFLYMODE](https://t.me/ITFLYMODE)                                                             |
+| 🎬 YouTube    | [@ITFLYMODE](https://www.youtube.com/@ITFLYMODE)                                                     |
+| 📺 RuTube     | [rutube.ru/channel/81614248](https://rutube.ru/channel/81614248)                                     |
+| 💻 GitHub     | [github.com/ITFLYMODE](https://github.com/ITFLYMODE)                                                 |
+| ✍️ Habr       | [habr.com/ru/users/ITFLYMODE](https://habr.com/ru/users/ITFLYMODE/)                                  |
+| 🔧 Hackaday   | [hackaday.io/ITFLYMODE](https://hackaday.io/ITFLYMODE)                                               |
+| 🛠 Hackster   | [hackster.io/itflymode](https://www.hackster.io/itflymode/)                                          |
+| 🖨 Printables | [printables.com/@ITFLYMODE](https://www.printables.com/@ITFLYMODE_5323822)                           |
+| 👽 Reddit     | [reddit.com/user/ITFLYMODE](https://www.reddit.com/user/ITFLYMODE/)                                  |
+| 📷 Instagram  | [instagram.com/itflymode](https://www.instagram.com/itflymode/)                                      |
+| 📘 Facebook   | [facebook.com/profile.php?id=61594741414231](https://www.facebook.com/profile.php?id=61594741414231) |
+| 💛 Boosty     | [boosty.to/itflymode](https://boosty.to/itflymode)                                                   |
 
 ---
 

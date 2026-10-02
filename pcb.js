@@ -1,5 +1,5 @@
 /* ============================================================
-   ITFLYMODE — фон (PCB + точки) + поведение навигации
+   ITFLYMODE — фон (PCB + точки) + scroll-анимации + sticky
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -111,14 +111,55 @@ document.addEventListener('DOMContentLoaded', function () {
     <use href="#dots-group" transform="translate(1600,900) scale(-1,-1)"/>
 </svg>`;
 
-    const div = document.createElement('div');
-    div.className = 'pcb-bg';
-    div.setAttribute('aria-hidden', 'true');
-    div.innerHTML = svg;
-    document.body.insertBefore(div, document.body.firstChild);
+    const bgDiv = document.createElement('div');
+    bgDiv.className = 'pcb-bg';
+    bgDiv.setAttribute('aria-hidden', 'true');
+    bgDiv.innerHTML = svg;
+    document.body.insertBefore(bgDiv, document.body.firstChild);
 
 
-    /* ===== 2. НАВИГАЦИЯ: компактность при скролле ===== */
+    /* ===== 2. СЕКЦИИ: появление при скролле ===== */
+    const sections = document.querySelectorAll('.section');
+
+    function revealInitialSections() {
+        const vh = window.innerHeight;
+        let visibleIndex = 0;
+
+        sections.forEach(function (section) {
+            const rect = section.getBoundingClientRect();
+
+            if (rect.top < vh && rect.bottom > 0) {
+                section.style.transitionDelay = (visibleIndex * 0.15) + 's';
+                visibleIndex++;
+                requestAnimationFrame(function () {
+                    section.classList.add('visible');
+                });
+            }
+        });
+    }
+
+    const sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.transitionDelay = '0s';
+                entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -60px 0px'
+    });
+
+    revealInitialSections();
+    sections.forEach(function (section) {
+        if (!section.classList.contains('visible')) {
+            sectionObserver.observe(section);
+        }
+    });
+
+
+    /* ===== 3. НАВИГАЦИЯ: компактность при скролле ===== */
     const nav = document.querySelector('nav');
     if (nav) {
         const onScroll = function () {

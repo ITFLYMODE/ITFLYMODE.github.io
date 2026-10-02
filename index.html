@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1e2a3a">
 
     <title>ITFLYMODE — личные проекты самодельщика | Arduino, ESP32, STM32</title>
     <meta name="description" content="ITFLYMODE — личные проекты самодельщика: Arduino, ESP32, STM32, готовые устройства, прошивки и статьи. Схемы, гайды и видео.">
@@ -144,21 +145,86 @@
             const buttons = document.querySelectorAll('#projectCategories a');
             const cards = document.querySelectorAll('#projectsGrid .project-card');
 
+            const isMobile = window.innerWidth <= 900;
+
+            /* === Очередь появления карточек (только для мобильных) === */
+            const queue = [];
+            let processing = false;
+            const queueDelay = 500;
+
+            function processQueue() {
+                if (queue.length === 0) {
+                    processing = false;
+                    return;
+                }
+                processing = true;
+                const card = queue.shift();
+                card.classList.remove('queued');
+                card.style.transform = '';
+                void card.offsetWidth;
+                card.classList.add('appear');
+                setTimeout(processQueue, queueDelay);
+            }
+
+            function enqueueCard(card) {
+                if (card.classList.contains('appear') || card.classList.contains('queued')) return;
+                card.classList.add('queued');
+                queue.push(card);
+                if (!processing) processQueue();
+            }
+
+            /* === IntersectionObserver (только мобильные) === */
+            let cardObserver = null;
+            if (isMobile) {
+                cardObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            enqueueCard(entry.target);
+                            cardObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -80px 0px'
+                });
+            }
+
             function applyFilter(category) {
+                queue.length = 0;
+                processing = false;
+
                 let visibleIndex = 0;
 
                 cards.forEach(function (card) {
                     card.classList.remove('appear');
+                    card.classList.remove('queued');
+                    card.style.animationDelay = '';
+                    card.style.transform = '';
+
+                    if (isMobile && cardObserver) {
+                        cardObserver.unobserve(card);
+                    }
 
                     if (category === 'all' || card.dataset.category === category) {
                         card.classList.remove('hidden');
-                        void card.offsetWidth;
-                        card.style.animationDelay = (visibleIndex * 0.15) + 's';
-                        card.classList.add('appear');
-                        visibleIndex++;
+
+                        if (isMobile) {
+                            const rect = card.getBoundingClientRect();
+                            const vh = window.innerHeight;
+
+                            if (rect.top < vh - 80 && rect.bottom > 0) {
+                                enqueueCard(card);
+                            } else {
+                                cardObserver.observe(card);
+                            }
+                        } else {
+                            void card.offsetWidth;
+                            card.style.animationDelay = (visibleIndex * 0.15) + 's';
+                            card.classList.add('appear');
+                            visibleIndex++;
+                        }
                     } else {
                         card.classList.add('hidden');
-                        card.style.animationDelay = '';
                     }
                 });
             }
